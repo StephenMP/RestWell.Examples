@@ -1,5 +1,3 @@
-# RestWell.Examples
-
 ## Current RestWell Version
 3.0.1
 
@@ -8,6 +6,4 @@ This is an example project demonstrating the usage of the [RestWell](https://git
 
 To begin, a good first steps is to check out the [Introduction Project](https://github.com/StephenMP/RestWell.Examples/blob/master/RestWell.Examples.Introduction/Introduction.cs)
 
-## Links
-* [RestWell Project Site](https://github.com/StephenMP/RestWell)
-* [RestWell Documentation](https://github.com/StephenMP/RestWell/wiki)
+## [RestWell Project Site](https://github.com/StephenMP/RestWell)
