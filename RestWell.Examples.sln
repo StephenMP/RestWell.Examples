@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.10
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestWell.Examples.Resource.Api", "RestWell.Examples.Resource.Api\RestWell.Examples.Resource.Api.csproj", "{7734BFD7-B862-4BA3-945E-851002620A7D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestWell.Examples.Introduction", "RestWell.Examples.Introduction\RestWell.Examples.Introduction.csproj", "{2F0F5661-E28C-48C3-9F26-34340B623CF4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestWell.Examples.Resource.Shared", "RestWell.Examples.Resource.Shared\RestWell.Examples.Resource.Shared.csproj", "{4DE140DD-CE67-45F1-9239-BCF2BFE848A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestWell.Examples.ConfiguringTheProxy", "RestWell.Examples.ConfiguringTheProxy\RestWell.Examples.ConfiguringTheProxy.csproj", "{02226881-9A15-4405-97C6-990275EBCFAC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7734BFD7-B862-4BA3-945E-851002620A7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7734BFD7-B862-4BA3-945E-851002620A7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7734BFD7-B862-4BA3-945E-851002620A7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7734BFD7-B862-4BA3-945E-851002620A7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F0F5661-E28C-48C3-9F26-34340B623CF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F0F5661-E28C-48C3-9F26-34340B623CF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F0F5661-E28C-48C3-9F26-34340B623CF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F0F5661-E28C-48C3-9F26-34340B623CF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DE140DD-CE67-45F1-9239-BCF2BFE848A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DE140DD-CE67-45F1-9239-BCF2BFE848A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DE140DD-CE67-45F1-9239-BCF2BFE848A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DE140DD-CE67-45F1-9239-BCF2BFE848A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02226881-9A15-4405-97C6-990275EBCFAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02226881-9A15-4405-97C6-990275EBCFAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02226881-9A15-4405-97C6-990275EBCFAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02226881-9A15-4405-97C6-990275EBCFAC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4349EA46-9623-45A3-B931-3827801A65E8}
+	EndGlobalSection
+EndGlobal
