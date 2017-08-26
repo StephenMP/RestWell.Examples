@@ -6,5 +6,6 @@ This is an example project demonstrating the usage of the [RestWell](https://git
 
 ## Contents
 * [Introduction](https://github.com/StephenMP/RestWell.Examples/tree/master/Introduction)
+* [Creating a Request](https://github.com/StephenMP/RestWell.Examples/tree/master/CreatingARequest.cs)
 * [Configuring The Proxy](https://github.com/StephenMP/RestWell.Examples/tree/master/ConfiguringTheProxy)
 * [Request and Response Bodies](https://github.com/StephenMP/RestWell.Examples/tree/master/RequestAndResponseBodies)
