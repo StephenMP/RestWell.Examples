@@ -41,7 +41,11 @@ namespace RestWell.Examples.RequestAndResponseBodies
 
                 using (var proxy = new Proxy())
                 {
-                    // Set the Request DTO and Response DTO types for the ProxyRequestBuilder
+                    /*
+                     * Set the Request DTO and Response DTO types for the ProxyRequestBuilder
+                     * Note: If a request does not have a Request Body or a Response Body you
+                     *       can use System.Missing as the type to specify that there is no body
+                     */
                     var proxyRequest = ProxyRequestBuilder<ExampleRequestDto, ExampleResponseDto>
                                         .CreateBuilder(baseUri, HttpRequestMethod.Get)
                                         .AppendToRoute("api/example/body")
