@@ -74,13 +74,7 @@ namespace RestWell.Examples.Introduction
                     {
                         // If so, we can get the response body and do something with it
                         var valuesArray = proxyResponse.ResponseDto;
-
-                        Console.WriteLine("Values from the API:");
-
-                        foreach (var value in valuesArray)
-                        {
-                            Console.WriteLine($"\t{value}");
-                        }
+                        Writer.WriteValues(valuesArray);
                     }
 
                     // Otherwise, we should probably handle a failed request

@@ -64,7 +64,7 @@ namespace RestWell.Examples.ConfiguringTheProxy
 
                         // Show the API response
                         var valuesArray = proxyResponse.ResponseDto;
-                        WriteValues(valuesArray);
+                        Writer.WriteValues(valuesArray);
                     }
                 }
 
@@ -107,7 +107,7 @@ namespace RestWell.Examples.ConfiguringTheProxy
 
                         // Show the API response
                         var valuesArray = proxyResponse.ResponseDto;
-                        WriteValues(valuesArray);
+                        Writer.WriteValues(valuesArray);
                     }
                 }
 
@@ -145,7 +145,7 @@ namespace RestWell.Examples.ConfiguringTheProxy
                     if (proxyResponse.IsSuccessfulStatusCode)
                     {
                         var valuesArray = proxyResponse.ResponseDto;
-                        WriteValues(valuesArray);
+                        Writer.WriteValues(valuesArray);
                     }
                 }
 
@@ -153,16 +153,6 @@ namespace RestWell.Examples.ConfiguringTheProxy
             }
 
             Console.ReadKey();
-        }
-
-        private static void WriteValues(string[] values)
-        {
-            Console.WriteLine("Values from the API:");
-
-            foreach (var value in values)
-            {
-                Console.WriteLine($"\t{value}");
-            }
         }
     }
 }

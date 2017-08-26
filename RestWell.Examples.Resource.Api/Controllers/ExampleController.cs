@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RestWell.Examples.Resource.Api.Response;
+using RestWell.Examples.Resource.Api.Dtos;
 
 namespace RestWell.Examples.Resource.Api.Controllers
 {
@@ -12,27 +12,11 @@ namespace RestWell.Examples.Resource.Api.Controllers
             return Ok(new string[] { "value1", "value2" });
         }
 
-        [HttpGet("{id}")]
-        public IActionResult Get(int id, [FromQuery]int? appendId)
+        [HttpGet("body")]
+        public IActionResult GetBody([FromBody]ExampleApiRequestDto exapmleApiRequestDto)
         {
-            if (appendId.HasValue)
-            {
-                return Ok(new string[] { $"value1-{id}-{appendId.Value}", $"value2-{id}-{appendId.Value}" });
-            }
-
-            return Ok(new string[] { $"value1-{id}", $"value2-{id}" });
-        }
-
-        [HttpPost]
-        public IActionResult Post([FromBody]ExampleApiResponse messageRequestDto)
-        {
-            if (ModelState.IsValid && messageRequestDto != null)
-            {
-                var messageResponseDto = new ExampleApiResponse();
-                return Ok(messageResponseDto);
-            }
-
-            return BadRequest();
+            var exampleResponseDto = new ExampleApiResponseDto { Message = $"The Request Body Message Was -> {exapmleApiRequestDto.Message}" };
+            return Ok(exampleResponseDto);
         }
     }
 }
