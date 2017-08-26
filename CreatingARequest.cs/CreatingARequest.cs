@@ -1,5 +1,6 @@
 ﻿using RestWell.Client.Enums;
 using RestWell.Client.Request;
+using RestWell.Examples.CreatingARequest.cs.Requests;
 using RestWell.Examples.CreatingARequest.Dtos;
 using RestWell.Examples.Resource.Shared;
 using System;
@@ -31,9 +32,27 @@ namespace RestWell.Examples.CreatingARequest.cs
 
             Writer.WriteRequest(proxyRequest);
 
-            Console.ReadKey();
+            #endregion
+
+            Console.WriteLine("\n==========\n");
+
+            #region Implmenting your own IProxyRequest<TRequestDto, TResponseDto>
+
+            /*
+             * Implementing the IProxyRequest<TRequestDto, TResponseDto> gives you complete control over
+             * structure of the request. It also allows you to perform logic to build up your request
+             * in a class of it's own rather than using the fluent ProxyRequestBuilder.
+             */
+
+            // MyProxyRequest is a custom class which implement IProxyRequest<ExampleRequestDto, ExampleResponseDto>
+            // It's implementation matches the ProxyRequestBuilder code above.
+            var myProxyRequest = new MyProxyRequest("https://www.this.is/a/base/url/api", new ExampleRequestDto { Message = "Hello World" });
+
+            Writer.WriteRequest(myProxyRequest);
 
             #endregion
+
+            Console.ReadKey();
         }
     }
 }
