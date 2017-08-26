@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model DependencyInjection.Models.HomeModel
+
+@foreach (var value in Model.Values)
+{
+    <p>Value: @value</p>
+}
