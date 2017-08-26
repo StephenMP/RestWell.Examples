@@ -15,6 +15,7 @@ namespace RestWell.Examples.CreatingARequest.cs
              * There are two ways in which you can create a request.
              *  1. Using the ProxyRequestBuilder class (easiest)
              *  2. Implementing the IProxyRequest<TRequestDto, TResponseDto> yourself (most configurable)
+             *  3. Why not both?
              */
 
             #region Using the Proxy Request Builder
@@ -47,8 +48,21 @@ namespace RestWell.Examples.CreatingARequest.cs
             // MyProxyRequest is a custom class which implement IProxyRequest<ExampleRequestDto, ExampleResponseDto>
             // It's implementation matches the ProxyRequestBuilder code above.
             var myProxyRequest = new MyProxyRequest("https://www.this.is/a/base/url/api", new ExampleRequestDto { Message = "Hello World" });
-
             Writer.WriteRequest(myProxyRequest);
+
+            #endregion
+
+            Console.WriteLine("\n==========\n");
+
+            #region Why Not Both?
+
+            /*
+             * There's nothing that says we can't use both methods of creaing
+             * a ProxyRequest... :)
+             */
+
+            var myMixedProxyRequest = new WhyNotBothProxyRequest("https://www.this.is/a/base/url/api", new ExampleRequestDto { Message = "Hello World" });
+            Writer.WriteRequest(myMixedProxyRequest);
 
             #endregion
 
