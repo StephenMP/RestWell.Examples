@@ -12,6 +12,7 @@ namespace DependencyInjection.Controllers
     {
         private readonly IProxy proxy;
 
+        // The proxy will be injected the the DI framework
         public HomeController(IProxy proxy)
         {
             this.proxy = proxy;

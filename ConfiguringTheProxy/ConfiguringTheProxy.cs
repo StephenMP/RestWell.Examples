@@ -124,6 +124,9 @@ namespace RestWell.Examples.ConfiguringTheProxy
                  * you can give the translator a message, they can manipulate the message and send it
                  * to someone else. One really awesome thing you can do with Delegating Handlers is
                  * insert logging into your request pipeline!
+                 * 
+                 * Note: The order of which you inject your Delegating Handlers matters. It is a
+                 * First In First Out order (i.e. the first registered DelegatingHandler will execute first)
                  */
 
                 proxyConfiguration = ProxyConfigurationBuilder
