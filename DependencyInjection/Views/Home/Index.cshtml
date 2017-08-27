@@ -4,7 +4,16 @@
 
 @model DependencyInjection.Models.HomeModel
 
-@foreach (var value in Model.Values)
+<h2>Values From Injected Proxy Configuration</h2>
+@foreach (var value in Model.ValuesFromInjectedProxyConfiguration)
+{
+    <p>Value: @value</p>
+}
+
+<br />
+
+<h2>Values From Injected Proxy</h2>
+@foreach (var value in Model.ValuesFromInjectedProxy)
 {
     <p>Value: @value</p>
 }

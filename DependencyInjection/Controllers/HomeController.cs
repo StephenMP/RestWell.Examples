@@ -10,12 +10,14 @@ namespace DependencyInjection.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IProxy proxy;
+        private readonly IProxyConfiguration injectedProxyConfiguration;
+        private readonly IProxy injectedProxy;
 
-        // The proxy will be injected the the DI framework
-        public HomeController(IProxy proxy)
+        // The ProxyConfiguration and Proxy will be injected the the DI framework
+        public HomeController(IProxyConfiguration proxyConfiguration, IProxy proxy)
         {
-            this.proxy = proxy;
+            this.injectedProxyConfiguration = proxyConfiguration;
+            this.injectedProxy = proxy;
         }
 
         public async Task<IActionResult> Index()
@@ -32,11 +34,23 @@ namespace DependencyInjection.Controllers
                                     .Accept("application/json")
                                     .Build();
 
-                var proxyResponse = await this.proxy.InvokeAsync(proxyRequest);
-
-                if (proxyResponse.IsSuccessfulStatusCode)
+                // Using the inject ProxyConfiguration
+                using (var proxy = new Proxy(this.injectedProxyConfiguration))
                 {
-                    model.Values = proxyResponse.ResponseDto;
+                    var proxyResponseForInjectedProxyConfiguration = await this.injectedProxy.InvokeAsync(proxyRequest);
+
+                    if (proxyResponseForInjectedProxyConfiguration.IsSuccessfulStatusCode)
+                    {
+                        model.ValuesFromInjectedProxyConfiguration = proxyResponseForInjectedProxyConfiguration.ResponseDto;
+                    }
+                }
+
+                // Using the injected Proxy
+                var proxyResponseForInjectedProxy = await this.injectedProxy.InvokeAsync(proxyRequest);
+
+                if (proxyResponseForInjectedProxy.IsSuccessfulStatusCode)
+                {
+                    model.ValuesFromInjectedProxy = proxyResponseForInjectedProxy.ResponseDto;
                 }
             }
 

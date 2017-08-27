@@ -13,9 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConfiguringTheProxy", "Conf
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestAndResponseBodies", "RequestAndResponseBodies\RequestAndResponseBodies.csproj", "{C96E59FA-A56D-42AA-8CEF-5FEACC326E07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreatingARequest.cs", "CreatingARequest.cs\CreatingARequest.cs.csproj", "{D9362DB3-1DFB-45B5-9E48-83BCCC6C935F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreatingARequest.cs", "CreatingARequest.cs\CreatingARequest.cs.csproj", "{D9362DB3-1DFB-45B5-9E48-83BCCC6C935F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyInjection", "DependencyInjection\DependencyInjection.csproj", "{675C4B5A-4A68-4FDC-9311-6B60FEC42DE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DependencyInjection", "DependencyInjection\DependencyInjection.csproj", "{675C4B5A-4A68-4FDC-9311-6B60FEC42DE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "Testing\Testing.csproj", "{AF6832C3-24BB-499C-80E9-A6CFE0AE8793}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{675C4B5A-4A68-4FDC-9311-6B60FEC42DE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{675C4B5A-4A68-4FDC-9311-6B60FEC42DE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{675C4B5A-4A68-4FDC-9311-6B60FEC42DE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF6832C3-24BB-499C-80E9-A6CFE0AE8793}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF6832C3-24BB-499C-80E9-A6CFE0AE8793}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF6832C3-24BB-499C-80E9-A6CFE0AE8793}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF6832C3-24BB-499C-80E9-A6CFE0AE8793}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

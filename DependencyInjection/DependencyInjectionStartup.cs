@@ -6,9 +6,9 @@ using RestWell.Client;
 
 namespace DependencyInjection
 {
-    public class Startup
+    public class DependencyInjectionStartup
     {
-        public Startup(IConfiguration configuration)
+        public DependencyInjectionStartup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
@@ -24,7 +24,11 @@ namespace DependencyInjection
                                         .CreateBuilder()
                                         .Build();
 
-            // Inject the proxy as a singleton
+            // You can either inject the ProxyConfiguration and new the proxy up each time yourself
+            // (We recommmend injecting as a singleton)
+            services.AddSingleton(proxyConfiguration);
+
+            // Or you can inject the proxy
             services.AddSingleton<IProxy>(new Proxy(proxyConfiguration));
         }
 
