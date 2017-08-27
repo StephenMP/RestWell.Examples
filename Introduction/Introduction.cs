@@ -16,7 +16,7 @@ namespace RestWell.Examples.Introduction
                 /* 
                  * The using statment and this line only serve the purpose of spinning up
                  * a demo API (found in RestWell.Examples.Resource.Api) that we can use for 
-                 * demo purposes and gett it's base URI. These steps are not required for
+                 * demo purposes and get it's base URI. These steps are not required for
                  * the usage of RestWell.
                  */
                 var baseUri = environment.GetResourceWebService<Resource.Api.Startup>().BaseUri;
