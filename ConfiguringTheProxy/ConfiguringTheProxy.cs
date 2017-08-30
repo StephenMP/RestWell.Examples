@@ -126,7 +126,7 @@ namespace RestWell.Examples.ConfiguringTheProxy
                  * insert logging into your request pipeline!
                  * 
                  * Note: The order of which you inject your Delegating Handlers matters. It is a
-                 * First In First Out order (i.e. the first registered DelegatingHandler will execute first)
+                 * First In First Out order (i.e. the first registered DelegatingHandler will execute first).
                  */
 
                 proxyConfiguration = ProxyConfigurationBuilder
@@ -135,6 +135,53 @@ namespace RestWell.Examples.ConfiguringTheProxy
                                         .AddDelegatingHandlers(new LoggingDelegatingHandler())
                                         .UseDefaultAcceptHeader(new MediaTypeWithQualityHeaderValue("application/json"))
                                         .Build();
+
+                using (var proxy = new Proxy(proxyConfiguration))
+                {
+                    var proxyRequest = ProxyRequestBuilder<string[]>
+                                        .CreateBuilder(baseUri, HttpRequestMethod.Get)
+                                        .AppendToRoute("api/example")
+                                        .Build();
+
+                    var proxyResponse = proxy.Invoke(proxyRequest);
+
+                    if (proxyResponse.IsSuccessfulStatusCode)
+                    {
+                        var valuesArray = proxyResponse.ResponseDto;
+                        Writer.WriteValues(valuesArray);
+                    }
+                }
+
+                #endregion
+
+                Console.WriteLine("\n==========\n");
+
+                #region Using Delegating Actions
+
+                /*
+                 * Even cooler than Delegating Handlers are Delegating Actions. RestWell allows for
+                 * you to specify an Action Delegate to be injected into the request pipeline. This
+                 * allows you to inject logic into the request pipeline without having to extend
+                 * and override the DelegatingHandler class yourself.
+                 * 
+                 * Note: You can even mix and match Delegating Handlers and Delegating Actions.
+                 * Just remember, though, they are injected in FIFO order.
+                 */
+
+                proxyConfiguration = ProxyConfigurationBuilder
+                                            .CreateBuilder()
+                                            // Inject our Delegating Actions
+                                            .AddDelegatingAction((request, cancellationToken) =>
+                                                {
+                                                    Console.WriteLine($"Delegating Action Picked Up Request:");
+                                                    Console.WriteLine($"\tRequest Method: {request.Method.Method}");
+                                                    Console.WriteLine($"\tAccept Header: {request.Headers.Accept}");
+                                                    Console.WriteLine($"\tRequest URI: {request.RequestUri}");
+                                                    Console.WriteLine();
+                                                }
+                                            )
+                                            .UseDefaultAcceptHeader(new MediaTypeWithQualityHeaderValue("application/json"))
+                                            .Build();
 
                 using (var proxy = new Proxy(proxyConfiguration))
                 {
