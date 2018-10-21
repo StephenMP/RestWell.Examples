@@ -1,5 +1,5 @@
 ## Current RestWell Version
-3.1.0
+4.0.0
 
 ## Notes
 This is an example project demonstrating the usage of the [RestWell](https://github.com/StephenMP/RestWell) generic client. It serves the purpose of providing meainingful, hands on documentation. Feel free to use it as a playground for RestWell to learn it's ins and outs :)
