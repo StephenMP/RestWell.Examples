@@ -1,21 +1,26 @@
-﻿using RestWell.Client;
+﻿using System;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+using RestWell.Client;
 using RestWell.Client.Enums;
 using RestWell.Client.Request;
 using RestWell.Examples.ConfiguringTheProxy.DelegatingHandlers;
 using RestWell.Examples.Resource.Shared;
-using System;
-using System.Net.Http.Headers;
 
 namespace RestWell.Examples.ConfiguringTheProxy
 {
-    public class ConfiguringTheProxy
+    public static class ConfiguringTheProxy
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
+        {
+            MainAsync(args).GetAwaiter().GetResult();
+        }
+
+        private static async Task MainAsync(string[] args)
         {
             using (var environment = ExampleEnvironment.Start())
             {
                 var baseUri = environment.GetResourceWebService<Resource.Api.Startup>().BaseUri;
-
 
                 /*
                  * Configuring the proxy allows you to customize the proxy's behavior.
@@ -24,7 +29,6 @@ namespace RestWell.Examples.ConfiguringTheProxy
                  */
 
                 #region Setting a Default Request Header
-
 
                 // In order to configure the proxy, you need to create a ProxyConfiguration using the ProxyConfigurationBuilder
                 var proxyConfigurationBuilder = ProxyConfigurationBuilder.CreateBuilder();
@@ -49,7 +53,7 @@ namespace RestWell.Examples.ConfiguringTheProxy
                                         .AppendToRoute("api/example")
                                         .Build();
 
-                    var proxyResponse = proxy.Invoke(proxyRequest);
+                    var proxyResponse = await proxy.InvokeAsync(proxyRequest).ConfigureAwait(false);
 
                     if (proxyResponse.IsSuccessfulStatusCode)
                     {
@@ -92,7 +96,7 @@ namespace RestWell.Examples.ConfiguringTheProxy
                                         .Accept("application/json")
                                         .Build();
 
-                    var proxyResponse = proxy.Invoke(proxyRequest);
+                    var proxyResponse = await proxy.InvokeAsync(proxyRequest).ConfigureAwait(false);
 
                     if (proxyResponse.IsSuccessfulStatusCode)
                     {
@@ -143,7 +147,7 @@ namespace RestWell.Examples.ConfiguringTheProxy
                                         .AppendToRoute("api/example")
                                         .Build();
 
-                    var proxyResponse = proxy.Invoke(proxyRequest);
+                    var proxyResponse = await proxy.InvokeAsync(proxyRequest).ConfigureAwait(false);
 
                     if (proxyResponse.IsSuccessfulStatusCode)
                     {
@@ -171,7 +175,7 @@ namespace RestWell.Examples.ConfiguringTheProxy
                 proxyConfiguration = ProxyConfigurationBuilder
                                             .CreateBuilder()
                                             // Inject our Delegating Actions
-                                            .AddDelegatingAction((request, cancellationToken) =>
+                                            .AddDelegatingAction((request, _) =>
                                                 {
                                                     Console.WriteLine($"Delegating Action Picked Up Request:");
                                                     Console.WriteLine($"\tRequest Method: {request.Method.Method}");
@@ -190,7 +194,7 @@ namespace RestWell.Examples.ConfiguringTheProxy
                                         .AppendToRoute("api/example")
                                         .Build();
 
-                    var proxyResponse = proxy.Invoke(proxyRequest);
+                    var proxyResponse = await proxy.InvokeAsync(proxyRequest).ConfigureAwait(false);
 
                     if (proxyResponse.IsSuccessfulStatusCode)
                     {

@@ -1,18 +1,23 @@
-﻿using RestWell.Client;
+﻿using System;
+using System.Threading.Tasks;
+using RestWell.Client;
 using RestWell.Client.Enums;
 using RestWell.Client.Request;
 using RestWell.Examples.Resource.Shared;
-using System;
 
 namespace RestWell.Examples.Introduction
 {
-    public class Introduction
+    public static class Introduction
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
+        {
+            MainAsync(args).GetAwaiter().GetResult();
+        }
+
+        private static async Task MainAsync(string[] args)
         {
             using (var environment = ExampleEnvironment.Start())
             {
-
                 /* 
                  * The using statment and this line only serve the purpose of spinning up
                  * a demo API (found in RestWell.Examples.Resource.Api) that we can use for 
@@ -63,7 +68,7 @@ namespace RestWell.Examples.Introduction
                     #region Issue the ProxyRequest
 
                     // Use the proxy to invoke the request and obtain a response
-                    var proxyResponse = proxy.Invoke(proxyRequest);
+                    var proxyResponse = await proxy.InvokeAsync(proxyRequest).ConfigureAwait(false);
 
                     #endregion
 

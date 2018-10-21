@@ -1,9 +1,10 @@
+using System.Net;
+using System.Reflection;
+using System.Threading.Tasks;
 using RestWell.Client.Enums;
 using RestWell.Client.Request;
 using RestWell.Client.Response;
 using RestWell.Client.Testing;
-using System.Net;
-using System.Reflection;
 using Xunit;
 
 namespace XUnitTestProject1
@@ -13,7 +14,7 @@ namespace XUnitTestProject1
         #region Return a Response From a Specific ProxyRequest
 
         [Fact]
-        public void ReturnAResponseFromASpecificProxyRequest()
+        public async Task ReturnAResponseFromASpecificProxyRequest()
         {
 
             // Setup your mocked stuff
@@ -36,7 +37,7 @@ namespace XUnitTestProject1
 
             // Use the TetProxy in the class that needs it
             var classThatUsesProxy = new ClassThatUsesProxy(testProxy);
-            var methodThatUsesProxyResponse = classThatUsesProxy.MethodThatUsesProxy(mockedProxyRequest);
+            var methodThatUsesProxyResponse = await classThatUsesProxy.MethodThatUsesProxyAsync(mockedProxyRequest).ConfigureAwait(false);
 
             Assert.Equal("Mocked Value From A Specific Request 1", methodThatUsesProxyResponse[0]);
             Assert.Equal("Mocked Value From A Specific Request 2", methodThatUsesProxyResponse[1]);
@@ -47,7 +48,7 @@ namespace XUnitTestProject1
         #region Return a Response From a Any ProxyRequest
 
         [Fact]
-        public void ReturnAResponseFromAnyProxyRequest()
+        public async Task ReturnAResponseFromAnyProxyRequest()
         {
             // Setup your mocked stuff
             var mockedProxyRequest = ProxyRequestBuilder<string[]>
@@ -69,7 +70,7 @@ namespace XUnitTestProject1
 
             // Use the TetProxy in the class that needs it
             var classThatUsesProxy = new ClassThatUsesProxy(testProxy);
-            var methodThatUsesProxyResponse = classThatUsesProxy.MethodThatUsesProxy(mockedProxyRequest);
+            var methodThatUsesProxyResponse = await classThatUsesProxy.MethodThatUsesProxyAsync(mockedProxyRequest).ConfigureAwait(false);
 
             Assert.Equal("Mocked Value From Any Request 1", methodThatUsesProxyResponse[0]);
             Assert.Equal("Mocked Value From Any Request 2", methodThatUsesProxyResponse[1]);

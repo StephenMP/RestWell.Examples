@@ -2,13 +2,13 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
     <AssemblyName>RestWell.Examples.ConfiguringTheProxy</AssemblyName>
     <RootNamespace>RestWell.Examples.ConfiguringTheProxy</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="RestWell" Version="3.1.0" />
+    <PackageReference Include="RestWell" Version="4.0.0" />
   </ItemGroup>
 
   <ItemGroup>

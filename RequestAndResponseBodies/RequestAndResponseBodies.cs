@@ -1,15 +1,21 @@
-﻿using RestWell.Client;
+﻿using System;
+using System.Threading.Tasks;
+using RestWell.Client;
 using RestWell.Client.Enums;
 using RestWell.Client.Request;
 using RestWell.Examples.RequestAndResponseBodies.Dtos;
 using RestWell.Examples.Resource.Shared;
-using System;
 
 namespace RestWell.Examples.RequestAndResponseBodies
 {
-    class RequestAndResponseBodies
+    public static class RequestAndResponseBodies
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
+        {
+            MainAsync(args).GetAwaiter().GetResult();
+        }
+
+        private static async Task MainAsync(string[] args)
         {
             using (var environment = ExampleEnvironment.Start())
             {
@@ -54,7 +60,7 @@ namespace RestWell.Examples.RequestAndResponseBodies
                                         .SetRequestDto(new ExampleRequestDto { Message = "Hello World" })
                                         .Build();
 
-                    var proxyResponse = proxy.Invoke(proxyRequest);
+                    var proxyResponse = await proxy.InvokeAsync(proxyRequest).ConfigureAwait(false);
 
                     if (proxyResponse.IsSuccessfulStatusCode)
                     {

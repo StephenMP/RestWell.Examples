@@ -1,6 +1,7 @@
-﻿using RestWell.Client;
+﻿using System.Reflection;
+using System.Threading.Tasks;
+using RestWell.Client;
 using RestWell.Client.Request;
-using System.Reflection;
 
 namespace XUnitTestProject1
 {
@@ -13,9 +14,9 @@ namespace XUnitTestProject1
             this.proxy = proxy;
         }
 
-        public string[] MethodThatUsesProxy(IProxyRequest<Missing, string[]> proxyRequest)
+        public async Task<string[]> MethodThatUsesProxyAsync(IProxyRequest<Missing, string[]> proxyRequest)
         {
-            var proxyResponse = this.proxy.Invoke(proxyRequest);
+            var proxyResponse = await this.proxy.InvokeAsync(proxyRequest).ConfigureAwait(false);
 
             if (proxyResponse.IsSuccessfulStatusCode)
             {
